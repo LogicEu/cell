@@ -6,7 +6,7 @@
 #include <fcntl.h>
 #include <termios.h>
 
-//Get keyoard input form terminal loop
+//Get keyoard input from terminal loop
 
 int keyboardHit()
 {
