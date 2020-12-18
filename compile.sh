@@ -1,1 +1,1 @@
-gcc -Wall cell.c -o cellularautomata && ./cellularautomata
+gcc -Wall cell.c -o cell && ./cell
