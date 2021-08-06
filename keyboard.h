@@ -6,13 +6,10 @@
 #include <fcntl.h>
 #include <termios.h>
 
-//Get keyoard input from terminal loop
-
 int keyboardHit()
 {
     struct termios oldt, newt;
-    int ch;
-    int oldf;
+    int ch, oldf;
 
     tcgetattr(STDIN_FILENO, &oldt);
     newt = oldt;
@@ -26,8 +23,7 @@ int keyboardHit()
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
     fcntl(STDIN_FILENO, F_SETFL, oldf);
 
-    if(ch != EOF)
-    {
+    if(ch != EOF) {
         ungetc(ch, stdin);
         return 1;
     }
@@ -46,8 +42,7 @@ char getch()
 int keysPressed()
 {
     int pressed;
-    if(keyboardHit())
-    {
+    if(keyboardHit()) {
         pressed = getch();
         return pressed;
     }

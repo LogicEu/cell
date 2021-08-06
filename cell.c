@@ -1,7 +1,7 @@
 #include <time.h>
 #include "keyboard.h"
 
-// $ gcc -Wall cell.c -o cell
+// $ gcc -Wall cell.c -o cell 80 40
 
 int main(int argc, char* argv[])
 {
@@ -18,11 +18,15 @@ int main(int argc, char* argv[])
     }
 
     while(1) {
-        printf("-------------TERMINAL CELULAR AUTOMATA-------------\n");  
+        printf("-------------TERMINAL CELULAR AUTOMATA-------------\n");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 cells[x][y][1] = cells[x][y][0];
-                
+            }
+        }  
+        
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
                 if (restart) {
                     cells[x][y][0] = rand() % 2;
                     continue;
@@ -50,11 +54,13 @@ int main(int argc, char* argv[])
             }
             printf("\n");
         }
+
         printf("-- Press 'ESC' or 'q' to exit and 'r' to restart. --\n");
         restart = 0;
         key = keysPressed();
         if (key == 27 || key == 113) break;
         if (key == 114) restart = 1;
+
         usleep(50000); 
         system("clear");
     }
